@@ -10,12 +10,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.EditText;
 
 import com.darkgrue.craigslisttimer.URLMaker.Category;
 
 public class NewQuery extends Activity implements OnItemSelectedListener {
 
+	/*
+	 * TODO Add input checking upon sendSubmit() TODO Come up with solution for
+	 * determining city
+	 */
+
 	NewSearchFragment searchFragment;
+	final private String tag = "DARKGRUE";
+	final private String tagErr = "DARKGRUE-ERROR";
 
 	// //////////////////////////////////////////////////
 	// Resources to return that form query
@@ -34,6 +42,9 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		this.hasPic = false;
+		this.searchTitle = false;
 
 		FragmentManager fm = getFragmentManager();
 		if (fm.findFragmentById(android.R.id.content) == null) {
@@ -75,11 +86,13 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 
 	@Override
 	protected void onStop() {
+		// TODO Fill this in
 		super.onStop();
 	}
 
 	@Override
 	protected void onDestroy() {
+		// TODO Fill this in
 		super.onDestroy();
 	}
 
@@ -89,10 +102,14 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 
 	public void sendSubmit(View v) {
 		// TODO FIXME Data needs to be validated
-		Log.d("DARKGRUE", "sendSubmit()");
+		Log.d(this.tag, "sendSubmit()");
+		getEditTexts();
+
+		// TODO after validating information, bundle up the info and send it
+		// over to the main activity?
 
 	}
-	
+
 	// ///////OnItemSelectedListener Methods
 
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
@@ -100,7 +117,7 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 		// FOR SPINNER
 		// An item was selected. you can retrieve the selected item using
 		// parent.getItemAtPosition(pos)
-		Log.d("DarkGrue", "SPINNER CLICK");
+		Log.d(this.tag, "SPINNER CLICK");
 		this.category = stringToCategory(parent.getItemAtPosition(pos)
 				.toString());
 	}
@@ -108,7 +125,27 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 	public void onNothingSelected(AdapterView<?> parent) {
 		// FOR SPINNER
 		// Another interface callback
-		Log.d("DARKGRUE", "SPINNER CLICK");
+		Log.d(this.tag, "SPINNER NOTHING CLICK");
+	}
+
+	public void getEditTexts() {
+		// search_query
+		EditText _searchQuery_ = (EditText) findViewById(R.id.search_query);
+		this.searchQuery = _searchQuery_.getText().toString().trim();
+		Log.d(this.tag, "Search query: "  + this.searchQuery);
+
+		// min_ask_text
+		EditText _minAskText_ = (EditText) findViewById(R.id.min_ask_text);
+		this.minAsk = Integer.valueOf(_minAskText_.getText().toString().trim());
+		Log.d(this.tag, "Min asking value: " + this.minAsk);
+		// TODO Validate that is integer here
+
+		// max_ask_text
+		EditText _maxAskText_ = (EditText) findViewById(R.id.max_ask_text);
+		this.maxAsk = Integer.valueOf(_maxAskText_.getText().toString().trim());
+		Log.d(this.tag, "Max asking value: " + this.maxAsk);
+		// TODO Validate that is integer here
+
 	}
 
 	// //////////////////////////////////////////////////
@@ -122,11 +159,11 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 
 		if (map.containsKey(catAsString)) {
 			cat = map.get(catAsString);
-			Log.d("DARKGRUE",
+			Log.d(this.tag,
 					"For str " + catAsString + " returning " + cat.toString());
 			return cat;
 		} else {
-			Log.d("DARKGRUE_ERROR", "Could not find category for string "
+			Log.d(this.tagErr, "Could not find category for string "
 					+ catAsString);
 			return null;
 		}
@@ -140,8 +177,7 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 
 		for (int i = 0; i < catMap.size(); i++) {
 			revMap.put(vals[i], keys[i]);
-			Log.d("DARKGRUE",
-					"KEY:" + vals[i] + " VALUE: " + keys[i].toString());
+			Log.d(this.tag, "KEY:" + vals[i] + " VALUE: " + keys[i].toString());
 		}
 		return revMap;
 	}

@@ -25,14 +25,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/search_category"
-        android:hint="@string/min_ask_hint" />
+        android:hint="@string/min_ask_hint" 
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/max_ask_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/min_ask_text"
-        android:hint="@string/max_ask_hint" />
+        android:hint="@string/max_ask_hint"
+        android:inputType="number" />
 
     <CheckBox
         android:id="@+id/has_pic_box"
@@ -53,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/search_title_box"
-        android:text="@string/submit_button_string" 
-        android:onClick="sendSubmit"/>
+        android:onClick="sendSubmit"
+        android:text="@string/submit_button_string" />
 
 </RelativeLayout>
