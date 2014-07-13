@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -101,12 +102,28 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 	// //////////////////////////////////////////////////
 
 	public void sendSubmit(View v) {
+		Intent intent = new Intent();
+
 		// TODO FIXME Data needs to be validated
 		Log.d(this.tag, "sendSubmit()");
 		getEditTexts();
 
 		// TODO after validating information, bundle up the info and send it
 		// over to the main activity?
+		if (inputIsGood()) {
+			Log.d(this.tag, "INSIDE sendSubmit()"); // TODO RTL
+			intent.putExtra("searchQuery", this.searchQuery);
+			intent.putExtra("minAsk", this.minAsk);
+			intent.putExtra("maxAsk", this.maxAsk);
+			intent.putExtra("hasPic", this.hasPic);
+			intent.putExtra("searchTitle", this.searchTitle);
+			intent.putExtra("category", this.category);
+			setResult(RESULT_OK, intent);
+			this.finish();
+		} else {
+			setResult(RESULT_CANCELED);
+			this.finish();
+		}
 
 	}
 
@@ -132,18 +149,18 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 		// search_query
 		EditText _searchQuery_ = (EditText) findViewById(R.id.search_query);
 		this.searchQuery = _searchQuery_.getText().toString().trim();
-		Log.d(this.tag, "Search query: "  + this.searchQuery);
+		//Log.d(this.tag, "Search query: " + this.searchQuery);
 
 		// min_ask_text
 		EditText _minAskText_ = (EditText) findViewById(R.id.min_ask_text);
 		this.minAsk = Integer.valueOf(_minAskText_.getText().toString().trim());
-		Log.d(this.tag, "Min asking value: " + this.minAsk);
+		//Log.d(this.tag, "Min asking value: " + this.minAsk);
 		// TODO Validate that is integer here
 
 		// max_ask_text
 		EditText _maxAskText_ = (EditText) findViewById(R.id.max_ask_text);
 		this.maxAsk = Integer.valueOf(_maxAskText_.getText().toString().trim());
-		Log.d(this.tag, "Max asking value: " + this.maxAsk);
+		//Log.d(this.tag, "Max asking value: " + this.maxAsk);
 		// TODO Validate that is integer here
 
 	}
@@ -152,7 +169,7 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 	// Data model methods
 	// //////////////////////////////////////////////////
 
-	public Category stringToCategory(String catAsString) {
+	private Category stringToCategory(String catAsString) {
 		HashMap<String, Category> map = reverseEnumMap(new URLMaker()
 				.getCategoriesMap());
 		Category cat;
@@ -169,7 +186,7 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 		}
 	}
 
-	public HashMap<String, Category> reverseEnumMap(
+	private HashMap<String, Category> reverseEnumMap(
 			EnumMap<Category, String> catMap) {
 		HashMap<String, Category> revMap = new HashMap<String, Category>();
 		String[] vals = catMap.values().toArray(new String[catMap.size()]);
@@ -177,9 +194,15 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 
 		for (int i = 0; i < catMap.size(); i++) {
 			revMap.put(vals[i], keys[i]);
-			Log.d(this.tag, "KEY:" + vals[i] + " VALUE: " + keys[i].toString());
+			//Log.d(this.tag, "KEY:" + vals[i] + " VALUE: " + keys[i].toString());
 		}
 		return revMap;
+	}
+
+	private boolean inputIsGood() {
+		// TODO FIXME This method needs to actually verify data
+
+		return true;
 	}
 
 }

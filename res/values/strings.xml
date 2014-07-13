@@ -17,7 +17,7 @@
     <string name="search_title_string">Search title</string>
     <string name="submit_button_string">Submit</string>
     <string-array name="categories_strings">
-        <item >All for sale // wanted</item>
+        <item >All for sale / wanted</item>
         <item >Antiques</item>
         <item >Arts + Crafts</item>
         <item >Auto parts</item>

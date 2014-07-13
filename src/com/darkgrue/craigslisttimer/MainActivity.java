@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.darkgrue.craigslisttimer.URLMaker.Category;
+
 public class MainActivity extends Activity implements
 		ResultListFragment.OnResultSelectedListener {
 
@@ -31,7 +33,7 @@ public class MainActivity extends Activity implements
 	private ArrayList<String> queryDescriptionList;
 	private ArrayList<Query> queryList;
 
-	private final String dgTag = "DARKGRUE-ANDROID"; // Used for Log.d() calls
+	private final String dgTag = "DARKGRUE"; // Used for Log.d() calls
 
 	// //////////////////////////////////////////////////
 	// Activity Life Cycle Methods
@@ -128,7 +130,7 @@ public class MainActivity extends Activity implements
 		case R.id.new_search:
 			// TODO Launch activity for a new search here
 			Intent intent = new Intent(this, NewQuery.class);
-			startActivity(intent);
+			startActivityForResult(intent, 1337);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -137,6 +139,36 @@ public class MainActivity extends Activity implements
 
 	public void refresh() {
 		list.updateResultList(this, this.queryDescriptionList);
+	}
+
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 1337) { // TODO Change this line
+			if (resultCode == RESULT_OK) {
+				// Then this activity is returning back information about a new
+				// query
+				String _searchQuery_ = data.getStringExtra("searchQuery");
+				int _minAsk_ = data.getIntExtra("minAsk", 0);
+				int _maxAsk_ = data.getIntExtra("maxAsk", 0);
+				boolean _hasPic_ = data.getBooleanExtra("hasPic", false);
+				boolean _searchTitle_ = data.getBooleanExtra("searchTitle",
+						false);
+				Category _category_ = (Category) data
+						.getSerializableExtra("category");
+				// TODO Still need to get the category
+
+				Log.d(this.dgTag, "Got searchQuery:" + _searchQuery_);
+				Log.d(this.dgTag, "Got minAsk " + _minAsk_);
+				Log.d(this.dgTag, "Got maxAsk " + _maxAsk_);
+				Log.d(this.dgTag, "Got hasPic " + _hasPic_);
+				Log.d(this.dgTag, "Got searchTitle " + _searchTitle_);
+				Log.d(this.dgTag, "Got category " + _category_.toString());
+			} else if (resultCode == RESULT_CANCELED) {
+				// TODO Stuff here for a cancelled result from NewQuery Activity
+			}
+		} else {
+			// Unknown request
+			Log.d(this.dgTag, "Recieved an unknown request from an activity...");
+		}
 	}
 
 	// //////////////////////////////////////////////////
@@ -152,8 +184,8 @@ public class MainActivity extends Activity implements
 		this.queryList.set(position, _query_);
 		this.queryDescriptionList.set(position, _query_.getDescription());
 	}
-	
-	public void removeQuery(int position){
+
+	public void removeQuery(int position) {
 		this.queryList.remove(position);
 		this.queryDescriptionList.remove(position);
 	}
