@@ -162,6 +162,15 @@ public class MainActivity extends Activity implements
 				Log.d(this.dgTag, "Got hasPic " + _hasPic_);
 				Log.d(this.dgTag, "Got searchTitle " + _searchTitle_);
 				Log.d(this.dgTag, "Got category " + _category_.toString());
+				addQuery(new Query(_category_, _searchQuery_, _minAsk_,
+						_maxAsk_, _hasPic_, _searchTitle_, "portland")); // FIXME
+																			// Generate
+																			// city
+																			// after
+																			// that
+																			// is
+																			// built
+				refresh();
 			} else if (resultCode == RESULT_CANCELED) {
 				// TODO Stuff here for a cancelled result from NewQuery Activity
 			}
