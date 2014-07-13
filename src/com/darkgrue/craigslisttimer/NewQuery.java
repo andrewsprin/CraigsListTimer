@@ -35,6 +35,8 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 	private boolean hasPic;
 	private boolean searchTitle;
 	private String city = ""; // TODO FIXME Come up with a solution for this
+	// TODO Need timer
+	
 
 	// //////////////////////////////////////////////////
 	// Activity Lifecycle Methods
@@ -152,15 +154,21 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 
 		// min_ask_text
 		EditText _minAskText_ = (EditText) findViewById(R.id.min_ask_text);
-		this.minAsk = Integer.valueOf(_minAskText_.getText().toString().trim());
+		String _minAsk_ = "0";
+		if(!_minAskText_.getText().toString().trim().isEmpty()){
+			_minAsk_ = _minAskText_.getText().toString().trim();
+		}
+		this.minAsk = Integer.valueOf(_minAsk_);
 		// Log.d(this.tag, "Min asking value: " + this.minAsk);
-		// TODO Validate that is integer here
 
 		// max_ask_text
 		EditText _maxAskText_ = (EditText) findViewById(R.id.max_ask_text);
-		this.maxAsk = Integer.valueOf(_maxAskText_.getText().toString().trim());
+		String _maxAsk_ = "0";
+		if(!_maxAskText_.getText().toString().trim().isEmpty()){
+			_maxAsk_ = _maxAskText_.getText().toString().trim();
+		}
+		this.maxAsk = Integer.valueOf(_maxAsk_);
 		// Log.d(this.tag, "Max asking value: " + this.maxAsk);
-		// TODO Validate that is integer here
 
 	}
 
@@ -214,8 +222,16 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 	}
 
 	private boolean inputIsGood() {
-		// TODO FIXME This method needs to actually verify data
-
+		// FIXME This method needs to actually verify data TODO
+		if(this.searchQuery == null){
+			searchQuery = " ";
+		}
+		
+		if(this.category == null){
+			this.category = Category.sss;
+		}
+		
+		
 		return true;
 	}
 

@@ -195,24 +195,6 @@ public class MainActivity extends Activity implements
 	// //////////////////////////////////////////////////
 
 	private void loadQueryList() {
-		this.queryDescriptionList.add("Macbook");
-		this.queryDescriptionList.add("Motorcycle");
-		this.queryDescriptionList.add("Apartment");
-		this.queryDescriptionList.add("New Job");
 	}
-
-	// /////////////////////////////////////////////////////
-	// Deprecated Code Below
-	// /////////////////////////////////////////////////////
-
-	/*
-	 * public void sendMessage(View view) {
-	 * 
-	 * // Do something in response to button 1
-	 * 
-	 * Intent intent = new Intent(this, ListViewActivity.class);
-	 * 
-	 * startActivity(intent); }
-	 */
 
 }
