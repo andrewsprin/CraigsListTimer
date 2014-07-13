@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.darkgrue.craigslisttimer.NewSearch$PlaceholderFragment" >
+
+    <EditText
+        android:id="@+id/search_query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/search_query_hint" />
+
+    <Spinner
+        android:id="@+id/search_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_query" />
+
+    <EditText
+        android:id="@+id/min_ask_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_category"
+        android:hint="@string/min_ask_hint" />
+
+    <EditText
+        android:id="@+id/max_ask_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/min_ask_text"
+        android:hint="@string/max_ask_hint" />
+
+    <CheckBox
+        android:id="@+id/has_pic_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/max_ask_text"
+        android:text="@string/has_pic_string" />
+
+    <CheckBox
+        android:id="@+id/search_title_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/has_pic_box"
+        android:text="@string/search_title_string" />
+
+    <Button
+        android:id="@+id/submit_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_title_box"
+        android:text="@string/submit_button_string" 
+        android:onClick="sendSubmit"/>
+
+</RelativeLayout>

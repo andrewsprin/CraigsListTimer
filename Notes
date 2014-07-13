@@ -1,0 +1,6 @@
+Problems/Solutions
+==================
+-How will the screen be filled with data from results?
+	-AdapterView?
+		-ListView is a subclass of AdapterView
+			-Use ArrayAdapter to convert the data

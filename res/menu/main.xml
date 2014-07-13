@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_settings"/>
+    <item android:id="@+id/action_refresh" android:orderInCategory="200" android:title="@string/action_refresh_str" android:visible="true"></item>
+    <item android:id="@+id/new_search" android:orderInCategory="300" android:title="@string/new_search_query" android:visible="true"></item>
+
+</menu>
