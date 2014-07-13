@@ -41,14 +41,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/max_ask_text"
-        android:text="@string/has_pic_string" />
+        android:text="@string/has_pic_string" 
+        android:onClick="onCheckBoxClicked"/>
 
     <CheckBox
         android:id="@+id/search_title_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/has_pic_box"
-        android:text="@string/search_title_string" />
+        android:text="@string/search_title_string"
+        android:onClick="onCheckBoxClicked"/>
 
     <Button
         android:id="@+id/submit_search"

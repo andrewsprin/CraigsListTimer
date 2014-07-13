@@ -56,7 +56,6 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 
 			fm.beginTransaction()
 					.add(android.R.id.content, this.searchFragment).commit();
-
 		}
 
 	}
@@ -149,20 +148,34 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 		// search_query
 		EditText _searchQuery_ = (EditText) findViewById(R.id.search_query);
 		this.searchQuery = _searchQuery_.getText().toString().trim();
-		//Log.d(this.tag, "Search query: " + this.searchQuery);
+		// Log.d(this.tag, "Search query: " + this.searchQuery);
 
 		// min_ask_text
 		EditText _minAskText_ = (EditText) findViewById(R.id.min_ask_text);
 		this.minAsk = Integer.valueOf(_minAskText_.getText().toString().trim());
-		//Log.d(this.tag, "Min asking value: " + this.minAsk);
+		// Log.d(this.tag, "Min asking value: " + this.minAsk);
 		// TODO Validate that is integer here
 
 		// max_ask_text
 		EditText _maxAskText_ = (EditText) findViewById(R.id.max_ask_text);
 		this.maxAsk = Integer.valueOf(_maxAskText_.getText().toString().trim());
-		//Log.d(this.tag, "Max asking value: " + this.maxAsk);
+		// Log.d(this.tag, "Max asking value: " + this.maxAsk);
 		// TODO Validate that is integer here
 
+	}
+
+	public void onCheckBoxClicked(View view){
+		//A checkbox has been clicked
+		
+		switch(view.getId()){
+		case R.id.has_pic_box:
+			this.hasPic = !this.hasPic;
+			break;
+		case R.id.search_title_box:
+			this.searchTitle = !this.searchTitle;
+			break;
+		}
+		
 	}
 
 	// //////////////////////////////////////////////////
@@ -194,7 +207,8 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 
 		for (int i = 0; i < catMap.size(); i++) {
 			revMap.put(vals[i], keys[i]);
-			//Log.d(this.tag, "KEY:" + vals[i] + " VALUE: " + keys[i].toString());
+			// Log.d(this.tag, "KEY:" + vals[i] + " VALUE: " +
+			// keys[i].toString());
 		}
 		return revMap;
 	}
