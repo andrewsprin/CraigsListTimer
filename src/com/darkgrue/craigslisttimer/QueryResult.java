@@ -12,7 +12,7 @@ public class QueryResult {
 		this.url = _url_;
 		this.title = _title_;
 		
-		logMe();
+		//logMe();
 	}
 
 	public String getDescription() {

@@ -7,5 +7,13 @@ Example Data for Results Page single Result:
 	<span class="pl"> 
 		<span class="date">Jul  6</span>  
 		<a href="/mlt/sys/4556190070.html">Macbook Pro Laptop Charger</a> 
-	</span> 
-	<span class="l2"> <span class="price">$25</span>  <span class="pnr"> <small> (PDX downtown)</small> <span class="px"> <span class="p"> pic</span></span> </span>  <a class="gc" href="/sys/" data-cat="sys">computers - by owner</a> </span> </p>
+	</span>
+	
+
+Example Data for Results Page next page:
+No Next Page
+	<span class="button next" title="next page"> next &gt; </span>
+	
+Has Next Page
+	<a href="/search/sya?s=100&amp;hasPic=1&amp;query=macbook" class="button next" title="next page"> 
+	next &gt; </a>

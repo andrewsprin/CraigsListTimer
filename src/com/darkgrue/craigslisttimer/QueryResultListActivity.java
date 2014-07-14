@@ -34,7 +34,8 @@ public class QueryResultListActivity extends Activity implements
 		FragmentManager fm = getFragmentManager();
 		if (fm.findFragmentById(android.R.id.content) == null) {
 			this.listFrag = new QueryResultListFragment();
-			fm.beginTransaction().add(android.R.id.content, this.listFrag).commit();
+			fm.beginTransaction().add(android.R.id.content, this.listFrag)
+					.commit();
 			unpackQuery(getIntent());
 			new ResultPageFetcher().execute();
 			refresh();
@@ -50,8 +51,6 @@ public class QueryResultListActivity extends Activity implements
 		// TODO Auto-generated method stub
 		// TODO This Needs to eventually launch a specific result
 	}
-	
-
 
 	public void refresh() {
 		this.listFrag.updateResultList(this, query.getResultDescriptionList());
@@ -74,7 +73,7 @@ public class QueryResultListActivity extends Activity implements
 		this.query = new Query(_category, _searchQuery, _minAsk, _maxAsk,
 				_hasPic, _searchTitle, _city);
 	}
-	
+
 	// ResultPageFetcher
 	private class ResultPageFetcher extends AsyncTask<Void, Void, Void> {
 		ArrayList<String> queryResultURLList = new ArrayList<String>();
@@ -91,12 +90,29 @@ public class QueryResultListActivity extends Activity implements
 			try {
 				// Connect to the web site
 				Document document = Jsoup.connect(query.getURL()).get();
-				Elements rawResultList = document.select("p[class]");
-				//TODO Check to see if there is a next page
+				Log.d(tag, "ORIGINAL URL: " + query.getURL());
+				Elements rawResultList;
+				int pageCounter = 0;
+				
+				while (hasNextPage(document)) {
+					rawResultList = document.select("p[class]");
+					for (int i = 0; i < rawResultList.size(); i++) {
+						_resultList_.add(elementToQueryResult(rawResultList
+								.get(i)));
+						
+					}
+					pageCounter++;
+					Log.d(tag, "On page " + pageCounter);
+					document = Jsoup.connect(getNextPageURL(document)).get();
+				}
+				rawResultList = document.select("p[class]");
 				for (int i = 0; i < rawResultList.size(); i++) {
 					_resultList_
 							.add(elementToQueryResult(rawResultList.get(i)));
+					
 				}
+				pageCounter++;
+				Log.d(tag, "Final page number: " + pageCounter);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -110,7 +126,7 @@ public class QueryResultListActivity extends Activity implements
 			query.setResultList(_resultList_);
 			Log.d(tag, "QueryResultList set");
 			refresh();
-			
+
 		}
 
 		public QueryResult elementToQueryResult(Element res) {
@@ -133,10 +149,30 @@ public class QueryResultListActivity extends Activity implements
 			}
 			return returnMe;
 		}
-		
-		public boolean hasNextPage(Document doc){
+
+		public boolean hasNextPage(Document doc) {
 			// TODO Check to see if there is a next page here
-			return false;
+			String nextPage = "";
+			try {
+				nextPage = doc.select("a").select("a.button.next").first()
+						.attr("abs:href");
+				if (nextPage.compareTo("") == 0) {
+					return false;
+				} else {
+					Log.d(tag, "Next Page at :" + nextPage);
+					return true;
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+				Log.d(tag, "CAUGHT NULLPOINTER in Query Result List");
+				return false;
+			}
+		}
+
+		public String getNextPageURL(Document doc) {
+			String nextPage = doc.select("a").select("a.button.next").first()
+					.attr("abs:href");
+			return nextPage;
 		}
 	}
 
