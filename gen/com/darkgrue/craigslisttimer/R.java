@@ -71,6 +71,7 @@ public final class R {
         public static final int search_title_string=0x7f05000d;
         public static final int submit_button_string=0x7f05000e;
         public static final int title_activity_new_search=0x7f050008;
+        public static final int title_search_results_title=0x7f05000f;
     }
     public static final class style {
         /** 

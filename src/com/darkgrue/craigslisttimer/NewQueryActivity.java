@@ -15,7 +15,7 @@ import android.widget.EditText;
 
 import com.darkgrue.craigslisttimer.URLMaker.Category;
 
-public class NewQuery extends Activity implements OnItemSelectedListener {
+public class NewQueryActivity extends Activity implements OnItemSelectedListener {
 
 	/*
 	 * TODO Add input checking upon sendSubmit() TODO Come up with solution for
@@ -223,14 +223,14 @@ public class NewQuery extends Activity implements OnItemSelectedListener {
 
 	private boolean inputIsGood() {
 		// FIXME This method needs to actually verify data TODO
-		if(this.searchQuery == null){
+		if(this.searchQuery.isEmpty()){
 			searchQuery = " ";
+			return false;
 		}
 		
 		if(this.category == null){
 			this.category = Category.sss;
 		}
-		
 		
 		return true;
 	}

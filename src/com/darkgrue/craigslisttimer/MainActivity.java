@@ -92,8 +92,21 @@ public class MainActivity extends Activity implements
 	@Override
 	public void onResultSelected(int position) {
 		/*
-		 * TODO For the main class this
+		 * Eventually this method will need to call an intent to launch a new
+		 * activity that is the result page for the corresponding result
 		 */
+		Intent intent = new Intent(this, QueryResultListActivity.class);
+		//TODO FIXME send the query information over to the new activity somehow
+		Query _query = queryList.get(position);
+		intent.putExtra("url", _query.getURL());
+		intent.putExtra("city", _query.getCity());
+		intent.putExtra("category", _query.getCategory());
+		intent.putExtra("searchQuery", _query.getSearchQuery());
+		intent.putExtra("minAsk", _query.getMinAsk());
+		intent.putExtra("maxAsk", _query.getMaxAsk());
+		intent.putExtra("hasPic", _query.isHasPic());
+		intent.putExtra("searchTitle", _query.isSearchTitle());
+		startActivity(intent);
 	}
 
 	@Override
@@ -129,7 +142,7 @@ public class MainActivity extends Activity implements
 			return true;
 		case R.id.new_search:
 			// TODO Launch activity for a new search here
-			Intent intent = new Intent(this, NewQuery.class);
+			Intent intent = new Intent(this, NewQueryActivity.class);
 			startActivityForResult(intent, 1337);
 			return true;
 		default:

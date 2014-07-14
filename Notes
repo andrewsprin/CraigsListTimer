@@ -1,6 +1,11 @@
-Problems/Solutions
-==================
--How will the screen be filled with data from results?
-	-AdapterView?
-		-ListView is a subclass of AdapterView
-			-Use ArrayAdapter to convert the data
+Example Data for Results Page single Result:
+<p class="row" data-pid="4556190070"> 
+	<a href="/mlt/sys/4556190070.html" class="i" data-id="0:00c0c_5XXRrphnlka">
+		<span class="price">$25</span
+	</a> 
+	<span class="star v" title="save this post in your favorites list"></span> 
+	<span class="pl"> 
+		<span class="date">Jul  6</span>  
+		<a href="/mlt/sys/4556190070.html">Macbook Pro Laptop Charger</a> 
+	</span> 
+	<span class="l2"> <span class="price">$25</span>  <span class="pnr"> <small> (PDX downtown)</small> <span class="px"> <span class="p"> pic</span></span> </span>  <a class="gc" href="/sys/" data-cat="sys">computers - by owner</a> </span> </p>
