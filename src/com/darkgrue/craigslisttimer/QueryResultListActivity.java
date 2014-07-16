@@ -50,6 +50,10 @@ public class QueryResultListActivity extends Activity implements
 	public void onQueryResultSelected(int position) {
 		// TODO Auto-generated method stub
 		// TODO This Needs to eventually launch a specific result
+		Intent intent = new Intent(this, ListingActivity.class);
+		intent.putExtra("url", query.getResultList().get(position).getURL());
+		startActivity(intent);
+
 	}
 
 	public void refresh() {
@@ -93,13 +97,13 @@ public class QueryResultListActivity extends Activity implements
 				Log.d(tag, "ORIGINAL URL: " + query.getURL());
 				Elements rawResultList;
 				int pageCounter = 0;
-				
+
 				while (hasNextPage(document)) {
 					rawResultList = document.select("p[class]");
 					for (int i = 0; i < rawResultList.size(); i++) {
 						_resultList_.add(elementToQueryResult(rawResultList
 								.get(i)));
-						
+
 					}
 					pageCounter++;
 					Log.d(tag, "On page " + pageCounter);
@@ -109,7 +113,7 @@ public class QueryResultListActivity extends Activity implements
 				for (int i = 0; i < rawResultList.size(); i++) {
 					_resultList_
 							.add(elementToQueryResult(rawResultList.get(i)));
-					
+
 				}
 				pageCounter++;
 				Log.d(tag, "Final page number: " + pageCounter);
@@ -159,12 +163,12 @@ public class QueryResultListActivity extends Activity implements
 				if (nextPage.compareTo("") == 0) {
 					return false;
 				} else {
-					//Log.d(tag, "Next Page at :" + nextPage);
+					// Log.d(tag, "Next Page at :" + nextPage);
 					return true;
 				}
 			} catch (NullPointerException e) {
 				e.printStackTrace();
-				//Log.d(tag, "CAUGHT NULLPOINTER in Query Result List");
+				// Log.d(tag, "CAUGHT NULLPOINTER in Query Result List");
 				return false;
 			}
 		}
