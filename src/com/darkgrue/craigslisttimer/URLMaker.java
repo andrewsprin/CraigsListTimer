@@ -2,6 +2,7 @@ package com.darkgrue.craigslisttimer;
 
 import java.util.EnumMap;
 
+
 public class URLMaker {
 	private String cl = ".craigslist.org/";
 	private String city = "portland"; // TODO make a function that can covert

@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 
 public class TemplateResultListFragment extends ListFragment {
 
-	final String[] default_result = new String[] { "No Results" };
+	private String[] default_result = new String[] { "No Results" };
 	final List<String> empty_list = Arrays.asList(default_result);
 	private List<String> resultList = new ArrayList<String>();
 	private ArrayAdapter<String> adapter;

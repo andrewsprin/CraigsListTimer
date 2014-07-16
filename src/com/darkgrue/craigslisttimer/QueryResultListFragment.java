@@ -9,7 +9,8 @@ import android.widget.ListView;
 public class QueryResultListFragment extends TemplateResultListFragment {
 
 	OnQueryResultSelectedListener mCallBack;
-
+	private String[] default_result = new String[] { "Loading..." };
+	
 	public interface OnQueryResultSelectedListener {
 		public void onQueryResultSelected(int position);
 	}

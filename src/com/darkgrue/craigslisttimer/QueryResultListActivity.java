@@ -159,12 +159,12 @@ public class QueryResultListActivity extends Activity implements
 				if (nextPage.compareTo("") == 0) {
 					return false;
 				} else {
-					Log.d(tag, "Next Page at :" + nextPage);
+					//Log.d(tag, "Next Page at :" + nextPage);
 					return true;
 				}
 			} catch (NullPointerException e) {
 				e.printStackTrace();
-				Log.d(tag, "CAUGHT NULLPOINTER in Query Result List");
+				//Log.d(tag, "CAUGHT NULLPOINTER in Query Result List");
 				return false;
 			}
 		}

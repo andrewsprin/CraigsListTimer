@@ -15,11 +15,13 @@ import android.widget.EditText;
 
 import com.darkgrue.craigslisttimer.URLMaker.Category;
 
-public class NewQueryActivity extends Activity implements OnItemSelectedListener {
+public class NewQueryActivity extends Activity implements
+		OnItemSelectedListener {
 
 	/*
-	 * TODO Add input checking upon sendSubmit() TODO Come up with solution for
-	 * determining city
+	 * TODO Add input checking upon sendSubmit()
+	 * 
+	 * TODO Come up with solution for determining city
 	 */
 
 	NewSearchFragment searchFragment;
@@ -35,8 +37,8 @@ public class NewQueryActivity extends Activity implements OnItemSelectedListener
 	private boolean hasPic;
 	private boolean searchTitle;
 	private String city = ""; // TODO FIXME Come up with a solution for this
+
 	// TODO Need timer
-	
 
 	// //////////////////////////////////////////////////
 	// Activity Lifecycle Methods
@@ -155,7 +157,7 @@ public class NewQueryActivity extends Activity implements OnItemSelectedListener
 		// min_ask_text
 		EditText _minAskText_ = (EditText) findViewById(R.id.min_ask_text);
 		String _minAsk_ = "0";
-		if(!_minAskText_.getText().toString().trim().isEmpty()){
+		if (!_minAskText_.getText().toString().trim().isEmpty()) {
 			_minAsk_ = _minAskText_.getText().toString().trim();
 		}
 		this.minAsk = Integer.valueOf(_minAsk_);
@@ -164,7 +166,7 @@ public class NewQueryActivity extends Activity implements OnItemSelectedListener
 		// max_ask_text
 		EditText _maxAskText_ = (EditText) findViewById(R.id.max_ask_text);
 		String _maxAsk_ = "0";
-		if(!_maxAskText_.getText().toString().trim().isEmpty()){
+		if (!_maxAskText_.getText().toString().trim().isEmpty()) {
 			_maxAsk_ = _maxAskText_.getText().toString().trim();
 		}
 		this.maxAsk = Integer.valueOf(_maxAsk_);
@@ -172,10 +174,10 @@ public class NewQueryActivity extends Activity implements OnItemSelectedListener
 
 	}
 
-	public void onCheckBoxClicked(View view){
-		//A checkbox has been clicked
-		
-		switch(view.getId()){
+	public void onCheckBoxClicked(View view) {
+		// A checkbox has been clicked
+
+		switch (view.getId()) {
 		case R.id.has_pic_box:
 			this.hasPic = !this.hasPic;
 			break;
@@ -183,7 +185,7 @@ public class NewQueryActivity extends Activity implements OnItemSelectedListener
 			this.searchTitle = !this.searchTitle;
 			break;
 		}
-		
+
 	}
 
 	// //////////////////////////////////////////////////
@@ -223,15 +225,15 @@ public class NewQueryActivity extends Activity implements OnItemSelectedListener
 
 	private boolean inputIsGood() {
 		// FIXME This method needs to actually verify data TODO
-		if(this.searchQuery.isEmpty()){
+		if (this.searchQuery.isEmpty()) {
 			searchQuery = " ";
 			return false;
 		}
-		
-		if(this.category == null){
+
+		if (this.category == null) {
 			this.category = Category.sss;
 		}
-		
+
 		return true;
 	}
 

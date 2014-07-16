@@ -1,0 +1,13 @@
+CraigsList front end that also does automatic searches for those hard to find queries.
+
+Bug List
+========
+-Clicking "No Results" from homescreen crashes the app
+-Location locked to Portland as the city changing functionality hasn't been
+ implemented yet
+-App only covers the Sales section and is missing sections like jobs or 
+ housing
+-Needs some sort of a loading screen while searches are executing (wait can 
+ be quite long for searches with a lot of results as it grabs them all)
+-Settings Menu goes nowhere
+

@@ -17,3 +17,8 @@ No Next Page
 Has Next Page
 	<a href="/search/sya?s=100&amp;hasPic=1&amp;query=macbook" class="button next" title="next page"> 
 	next &gt; </a>
+
+
+Using View Pager as a replacement for the deprecated Gallery widget
+
+http://stackoverflow.com/questions/15833889/options-for-replacing-the-deprecated-gallery
