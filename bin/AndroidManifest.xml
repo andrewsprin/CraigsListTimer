@@ -38,6 +38,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.darkgrue.craigslisttimer.MainActivity" />
         </activity>
+        <activity 
+            android:name="com.darkgrue.craigslisttimer.ListingActivity"
+            android:label="@string/listing_name_default">
+            <meta-data 
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.darkgrue.craigslisttimer.MainActivity"/>
+        </activity>
     </application>
 
 </manifest>

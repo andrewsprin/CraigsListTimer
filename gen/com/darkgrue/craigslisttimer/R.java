@@ -32,20 +32,21 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_refresh=0x7f09000c;
-        public static final int action_settings=0x7f09000b;
+        public static final int action_refresh=0x7f09000d;
+        public static final int action_settings=0x7f09000c;
         public static final int container=0x7f090000;
-        public static final int has_pic_box=0x7f090008;
-        public static final int listing_description=0x7f090003;
-        public static final int listing_image=0x7f090002;
-        public static final int listing_title=0x7f090001;
-        public static final int max_ask_text=0x7f090007;
-        public static final int min_ask_text=0x7f090006;
-        public static final int new_search=0x7f09000d;
-        public static final int search_category=0x7f090005;
-        public static final int search_query=0x7f090004;
-        public static final int search_title_box=0x7f090009;
-        public static final int submit_search=0x7f09000a;
+        public static final int fragment_listing=0x7f090001;
+        public static final int has_pic_box=0x7f090009;
+        public static final int listing_description=0x7f090004;
+        public static final int listing_image=0x7f090003;
+        public static final int listing_title=0x7f090002;
+        public static final int max_ask_text=0x7f090008;
+        public static final int min_ask_text=0x7f090007;
+        public static final int new_search=0x7f09000e;
+        public static final int search_category=0x7f090006;
+        public static final int search_query=0x7f090005;
+        public static final int search_title_box=0x7f09000a;
+        public static final int submit_search=0x7f09000b;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -69,6 +70,7 @@ public final class R {
         public static final int hello_world=0x7f050002;
         public static final int it_worked=0x7f050005;
         public static final int listing_image_description=0x7f050010;
+        public static final int listing_name_default=0x7f050011;
         public static final int max_ask_hint=0x7f05000b;
         public static final int min_ask_hint=0x7f05000a;
         public static final int new_search_query=0x7f050007;

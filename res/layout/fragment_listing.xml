@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_listing"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,29 +10,29 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.darkgrue.craigslisttimer.ListingActivity" >
 
-    <TextView 
+    <TextView
         android:id="@+id/listing_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:text="@string/listing_name_default" />
     <!-- set text using TextView.setText() -->
 
-	<!--  Gallery was deprecated... TODO Figure out alternative -->
-	<ImageView 
-	    android:id="@+id/listing_image"
-	    android:layout_below="@id/listing_title"
-	    android:layout_height="wrap_content"
-	    android:layout_width="wrap_content"
-	    android:layout_centerInParent="true"
-	    android:contentDescription="@string/listing_image_description" />
-	
-	
-	<TextView 
-	    android:id="@+id/listing_description"
-	    android:layout_below="@id/listing_image"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"/>
-	<!-- Set text using TextView.setText() -->
-	
+
+    <!-- Gallery was deprecated... TODO Figure out alternative -->
+
+    <ImageView
+        android:id="@+id/listing_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listing_title"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/listing_image_description" />
+
+    <TextView
+        android:id="@+id/listing_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listing_image" />
+    <!-- Set text using TextView.setText() -->
 
 </RelativeLayout>

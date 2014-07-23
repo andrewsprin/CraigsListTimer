@@ -45,15 +45,15 @@ public class QueryResultListActivity extends Activity implements
 	// //////////////////////////////////////////////////
 	// Interaction Methods
 	// //////////////////////////////////////////////////
-
 	@Override
 	public void onQueryResultSelected(int position) {
 		// TODO Auto-generated method stub
 		// TODO This Needs to eventually launch a specific result
 		Intent intent = new Intent(this, ListingActivity.class);
-		intent.putExtra("url", query.getResultList().get(position).getURL());
-		startActivity(intent);
-
+		if (!query.getResultList().isEmpty()) {
+			intent.putExtra("url", query.getResultList().get(position).getURL());
+			startActivity(intent);
+		}
 	}
 
 	public void refresh() {

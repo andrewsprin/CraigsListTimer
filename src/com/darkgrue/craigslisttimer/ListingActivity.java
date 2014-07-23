@@ -4,22 +4,24 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.util.Log;
 
 public class ListingActivity extends Activity {
 	// TODO Get contact information dynamically and present
 	// the appropriate actions as options for the user
 
 	ListingFragment listing;
+	private String tag = "DARKGRUE";
 	String url = "";
 	String picURL = "";
-	String title = "Loading...";
-	String content = "";
+	String title = "";
+	String description = "";
+	int fragId;
 
 	// //////////////////////////////////////////////////
 	// Activity Lifecycle Methods
 	// //////////////////////////////////////////////////
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,78 +35,103 @@ public class ListingActivity extends Activity {
 		 * title, and a short description
 		 */
 		this.url = intent.getStringExtra("url");
-		
+
 		// TODO Start the finding of content here
-		
 
 		FragmentManager fm = getFragmentManager();
 		if (fm.findFragmentById(android.R.id.content) == null) {
-			this.listing = new ListingFragment();
-			TextView titleText = (TextView) findViewById(R.id.listing_title);
-			titleText.setText(this.title);
-			
-			
+			this.listing = new ListingFragment("Loading Listing Title...",
+					"Loading Listing Description...");
 			fm.beginTransaction().add(android.R.id.content, this.listing)
 					.commit();
-
+			this.fragId = this.listing.getId();
 		}
 
+		// NEXT STEP changeTitle() and changeDescription() here then redraw()
+		testUIMethods();
 	}
 
 	@Override
-	protected void onStart(){
+	protected void onStart() {
 		super.onStart();
 		// TODO Fill this in
 	}
-	
+
 	@Override
-	protected void onResume(){
+	protected void onResume() {
 		super.onResume();
-		//TODO Fill this in
+		// TODO Fill this in
 	}
-	
+
 	@Override
-	protected void onRestart(){
+	protected void onRestart() {
 		super.onRestart();
 		// TODO Fill this in
 	}
-	
+
 	@Override
-	protected void onPause(){
+	protected void onPause() {
 		super.onPause();
 		// TODO Fill this in
 	}
-	
+
 	@Override
-	protected void onStop(){
+	protected void onStop() {
 		super.onStop();
 		// TODO Fill this in
 	}
-	
+
 	@Override
-	protected void onDestroy(){
+	protected void onDestroy() {
 		super.onDestroy();
 		// TODO Fill this in
 	}
-	
-	
+
 	// //////////////////////////////////////////////////
 	// Interaction Methods
 	// //////////////////////////////////////////////////
-	
-	public void setNewTitle(String newTitle){
-		this.title = newTitle;
-		//TODO TextView.setText() used here?
+
+	public void redraw() {
+		FragmentManager fm = getFragmentManager();
+		if (fm.findFragmentById(android.R.id.content) == null) {
+			Log.d(this.tag, "Attempting to redraw the screen");
+			this.listing = new ListingFragment(this.title, this.description);
+			fm.beginTransaction().add(android.R.id.content, this.listing)
+					.commit();
+			this.fragId = this.listing.getId();
+
+		}
 	}
-	
-	
+
+	public void changeTitle(String newTitle) {
+		this.title = newTitle;
+		this.setTitle(this.title);
+	}
+
+	public void changeDescription(String newDesc) {
+		this.description = newDesc;
+	}
+
+	// TODO FIXME Still needs to get image data from page
+
 	// //////////////////////////////////////////////////
 	// Data Model Methods
 	// //////////////////////////////////////////////////
-	
-	
+
 	// //////////////////////////////////////////////////
 	// JSoup stuff
 	// //////////////////////////////////////////////////
 	// TODO Fetch the page here provided the URL
+
+	// //////////////////////////////////////////////////
+	// Test Cases
+	// //////////////////////////////////////////////////
+
+	private void testUIMethods() {
+		Log.d(this.tag, "Attempting to change ListingFragment data");
+		changeTitle("NEW TITLE. TEST WORKED.");
+		changeDescription("NEW DESC. TEST WORKED.");
+		redraw();
+	}
+
 }
