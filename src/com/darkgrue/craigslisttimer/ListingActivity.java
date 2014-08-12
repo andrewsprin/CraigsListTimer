@@ -111,9 +111,7 @@ public class ListingActivity extends Activity {
 	public void changeDescription(String newDesc) {
 		this.description = newDesc;
 	}
-
-	// TODO FIXME Still needs to get image data from page
-
+	
 	// //////////////////////////////////////////////////
 	// Data Model Methods
 	// //////////////////////////////////////////////////
@@ -122,6 +120,9 @@ public class ListingActivity extends Activity {
 	// JSoup stuff
 	// //////////////////////////////////////////////////
 	// TODO Fetch the page here provided the URL
+	// TODO Get the title of the page
+	// TODO Get the content of the page
+	// TODO Get Image from the page
 
 	// //////////////////////////////////////////////////
 	// Test Cases

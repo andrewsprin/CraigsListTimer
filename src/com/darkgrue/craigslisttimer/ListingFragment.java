@@ -1,7 +1,5 @@
 package com.darkgrue.craigslisttimer;
 
-import java.util.zip.Inflater;
-
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;

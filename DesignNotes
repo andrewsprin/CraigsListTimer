@@ -1,0 +1,29 @@
+Design Notes
+============
+
+Input
+=====
+-Search Query Information
+	-What they are looking for (Text Box)
+	-What CL category they want to search (spinner/scrollable)
+	-Should the search also search the title? (checkbox)
+	-Should the search be limited to results with pictures?(checkbox)
+	-What city they want to search (Needs to be designed)
+	-How often should the app search for new results (Needs to be designed)
+-I think that there should be a way to add/remove/edit exisiting queries
+
+Output
+======
+-List of existing Searches
+-List of results for existing searches
+-Pages for individual results
+
+As for what information belongs on what screens regarding input is still 
+completely up in the air, as well as what the output pages would look like.
+
+For android, google provides base widgets (that are currently being used), that
+can be essentially completely customized, so I should be able to make any mock
+ups functional relatively easily so long as it isn't in the realm of 3D. At 
+first glance, it looks like there is a way to do custom animations as well.
+
+
