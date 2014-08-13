@@ -47,6 +47,9 @@ public class ListingFragment extends Fragment {
 
 		return view;
 	}
+	
+	public void clearDescription(){
+	}
 
 	// ////////////////////////////////////////
 	// Deprecated Code Below

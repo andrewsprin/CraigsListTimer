@@ -93,8 +93,10 @@ public class ListingActivity extends Activity {
 
 	public void redraw() {
 		FragmentManager fm = getFragmentManager();
+		
 		if (fm.findFragmentById(android.R.id.content) == null) {
 			Log.d(this.tag, "Attempting to redraw the screen");
+			
 			this.listing = new ListingFragment(this.title, this.description);
 			fm.beginTransaction().add(android.R.id.content, this.listing)
 					.commit();
@@ -130,8 +132,14 @@ public class ListingActivity extends Activity {
 
 	private void testUIMethods() {
 		Log.d(this.tag, "Attempting to change ListingFragment data");
+		
+		// Line below works because it doesn't depend on redraw()?
 		changeTitle("NEW TITLE. TEST WORKED.");
-		changeDescription("NEW DESC. TEST WORKED.");
+		
+		// TODO Bug on the next line with getting description to accurately change
+		// bug lies in the redraw method
+		changeDescription("NEW DESC. TEST WORKED."); 
+		
 		redraw();
 	}
 
