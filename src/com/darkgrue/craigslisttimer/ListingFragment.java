@@ -29,6 +29,7 @@ public class ListingFragment extends Fragment {
 			Bundle savedInstanceState) {
 		this.inflater = inflater;
 		this.container = container;
+		this.getView().findViewById(R.id.listing_description).setTag("LISTINGTEXT");
 		View view = inflater.inflate(R.layout.fragment_listing, container,
 				false);
 
@@ -40,41 +41,55 @@ public class ListingFragment extends Fragment {
 		// Set the text views
 		this.title.setText(this.titleStr);
 		this.description.setText(this.descStr);
-		
-		
+
 		// changeTitle(this.titleStr); // Deprecated code TODO Remove
 		// changeDescription(this.descStr); // Deprecated code TODO Remove
 
 		return view;
 	}
-	
-	public void clearDescription(){
-	}
 
+	
+	public void changeDescription(String newDesc){
+		this.descStr = newDesc;
+		this.description = (TextView) this.getView().findViewWithTag("LISTINGTEXT");
+		this.description.setText(this.descStr);
+	}
+	
+	
 	// ////////////////////////////////////////
 	// Deprecated Code Below
 	// ////////////////////////////////////////
 
 	/*
-	 * private void refresh() { View view =
-	 * this.inflater.inflate(R.layout.fragment_listing, this.container, false);
-	 * 
-	 * }
-	 * 
-	 * private void changeTitle(String newTitle) { this.titleStr = newTitle;
-	 * this.title = (TextView) getView().findViewById(R.id.fragment_listing)
-	 * .findViewById(R.id.listing_title); this.title.setText(this.titleStr); }
-	 * 
-	 * private void changeDescription(String newDesc) { this.descStr = newDesc;
-	 * this.description = (TextView) getView().findViewById(
-	 * R.id.fragment_listing).findViewById(R.id.listing_description);
-	 * this.description.setText(this.descStr); }
-	 * 
-	 * public void setTitle(String newTitle) { this.titleStr = newTitle;
-	 * refresh(); }
-	 * 
-	 * public void setDescription(String newDesc) { this.descStr = newDesc;
-	 * refresh(); }
-	 */
+	// Make the code below public so that you can call it
+	private void refresh() {
+		View view = this.inflater.inflate(R.layout.fragment_listing,
+				this.container, false);
+
+	}
+
+	private void changeTitle(String newTitle) {
+		this.titleStr = newTitle;
+		this.title = (TextView) getView().findViewById(R.id.listing_title);
+		this.title.setText(this.titleStr);
+	}
+
+	private void changeDescription(String newDesc) {
+		this.descStr = newDesc;
+		this.description = (TextView) getView().findViewById(
+				R.id.fragment_listing).findViewById(R.id.listing_description);
+		this.description.setText(this.descStr);
+	}
+
+	public void setTitle(String newTitle) {
+		this.titleStr = newTitle;
+		refresh();
+	}
+
+	public void setDescription(String newDesc) {
+		this.descStr = newDesc;
+		refresh();
+	}
+	*/
 
 }

@@ -49,11 +49,17 @@ public class QueryResultListActivity extends Activity implements
 	public void onQueryResultSelected(int position) {
 		// TODO Auto-generated method stub
 		// TODO This Needs to eventually launch a specific result
+		
+		// Changing below code to be a webview instead, since ListingActivity is
+		// proving to be troublesome
+		/*
 		Intent intent = new Intent(this, ListingActivity.class);
 		if (!query.getResultList().isEmpty()) {
 			intent.putExtra("url", query.getResultList().get(position).getURL());
 			startActivity(intent);
 		}
+		*/
+		
 	}
 
 	public void refresh() {

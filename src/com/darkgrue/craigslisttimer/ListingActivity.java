@@ -42,8 +42,12 @@ public class ListingActivity extends Activity {
 		if (fm.findFragmentById(android.R.id.content) == null) {
 			this.listing = new ListingFragment("Loading Listing Title...",
 					"Loading Listing Description...");
-			fm.beginTransaction().add(android.R.id.content, this.listing)
-					.commit();
+			// Deprecated fragment initialization below
+			// fm.beginTransaction().add(android.R.id.content, this.listing)
+			// .commit();
+			// Begin new fragment initialization
+			fm.beginTransaction().add(this.listing, "GRUEFRAG").commit();
+			// TODO Webview for the new fragment?
 			this.fragId = this.listing.getId();
 		}
 
@@ -93,14 +97,25 @@ public class ListingActivity extends Activity {
 
 	public void redraw() {
 		FragmentManager fm = getFragmentManager();
-		
+
 		if (fm.findFragmentById(android.R.id.content) == null) {
 			Log.d(this.tag, "Attempting to redraw the screen");
+
+			this.listing = (ListingFragment) fm.findFragmentByTag("GRUETAG");
 			
-			this.listing = new ListingFragment(this.title, this.description);
-			fm.beginTransaction().add(android.R.id.content, this.listing)
-					.commit();
-			this.fragId = this.listing.getId();
+			
+			
+			//Comment below is deprecated 
+			/*
+			 * 
+			 * this.listing = new ListingFragment(this.title, this.description);
+			 * fm.beginTransaction().add(android.R.id.content, this.listing)
+			 * .commit();
+			 */
+			// fm beginTransaction().add() has a method where you can find
+			// the fragment by a custom string
+			// add(Fragment fragment, String tag)
+			// this.fragId = this.listing.getId(); // TODO RTL
 
 		}
 	}
@@ -112,8 +127,9 @@ public class ListingActivity extends Activity {
 
 	public void changeDescription(String newDesc) {
 		this.description = newDesc;
+		
 	}
-	
+
 	// //////////////////////////////////////////////////
 	// Data Model Methods
 	// //////////////////////////////////////////////////
@@ -132,14 +148,13 @@ public class ListingActivity extends Activity {
 
 	private void testUIMethods() {
 		Log.d(this.tag, "Attempting to change ListingFragment data");
-		
+
 		// Line below works because it doesn't depend on redraw()?
 		changeTitle("NEW TITLE. TEST WORKED.");
-		
-		// TODO Bug on the next line with getting description to accurately change
-		// bug lies in the redraw method
-		changeDescription("NEW DESC. TEST WORKED."); 
-		
+
+		// TODO Fix bug in redraw method,
+		changeDescription("NEW DESC. TEST WORKED.");
+
 		redraw();
 	}
 
